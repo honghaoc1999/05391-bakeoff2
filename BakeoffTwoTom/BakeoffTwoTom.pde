@@ -24,7 +24,7 @@ float lettersExpectedTotal = 0; //a running total of the number of letters expec
 float errorsTotal = 0; //a running total of the number of errors (when hitting next)
 String currentPhrase = ""; //the current target phrase
 String currentTyped = ""; //what the user has typed so far
-final int DPIofYourDeviceScreen = 200; //you will need to look up the DPI or PPI of your device to make sure you get the right scale!!
+final int DPIofYourDeviceScreen = 142; //you will need to look up the DPI or PPI of your device to make sure you get the right scale!!
 //http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
 final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 PImage watch;
@@ -79,9 +79,11 @@ void drawSuggestWords() {
     for (int i = 0; i < numSuggestWords; i++) {
       fill(0, 255, 255); //cyan suggest words background
       stroke(204, 102, 0);
-      rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i), height/2-sizeOfInputArea/2 + 40, sizeOfInputArea / numSuggestWords, 40);
+      rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i), height/2-sizeOfInputArea/2 + 40 * 0.71, sizeOfInputArea / numSuggestWords, 40 * 0.71);
       fill(0, 0, 0); // black suggest texts
-      text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i) + sizeOfInputArea / numSuggestWords / 2, height/2-sizeOfInputArea/2 + 40 + 17);
+      textSize(14);
+      text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i) + sizeOfInputArea / numSuggestWords / 2, height/2-sizeOfInputArea/2 + 40 * 0.71 + 17 * 0.71);
+      textSize(24);
     }
   }
   else {
@@ -89,16 +91,20 @@ void drawSuggestWords() {
       if (i < 2) {
         fill(0, 255, 255); //cyan suggest words background
         stroke(204, 102, 0);
-        rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i), height/2-sizeOfInputArea/2 + 40, sizeOfInputArea / 2, 40);
+        rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i), height/2-sizeOfInputArea/2 + 40 * 0.71, sizeOfInputArea / 2, 40 * 0.71);
         fill(0, 0, 0); // black suggest texts
-        text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i) + sizeOfInputArea / 2 / 2, height/2-sizeOfInputArea/2 + 40 + 17);
+        textSize(14);
+        text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i) + sizeOfInputArea / 2 / 2, height/2-sizeOfInputArea/2 + 40 * 0.71 + 17 * 0.71);
+        textSize(24);
       }
       else {
         fill(0, 255, 255); //cyan suggest words background
         stroke(204, 102, 0);
-        rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)), height/2-sizeOfInputArea/2, sizeOfInputArea / (numSuggestWords - 2), 40);
+        rect(width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)), height/2-sizeOfInputArea/2, sizeOfInputArea / (numSuggestWords - 2), 40 * 0.71);
         fill(0, 0, 0); // black suggest texts
-        text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)) + sizeOfInputArea / (numSuggestWords - 2) / 2, height/2-sizeOfInputArea/2 + 17);
+        textSize(14);
+        text(suggestTopNWords.get(i), width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)) + sizeOfInputArea / (numSuggestWords - 2) / 2, height/2-sizeOfInputArea/2 + 17 * 0.71);
+        textSize(24);
       }
     }
   }
@@ -155,40 +161,47 @@ void draw()
     for (int i = 0; i < keyboardLetters.size(); i++) {
       if (i < 10) { // first row of text buttons
         fill(255, 255, 255);
-        print(sizeOfInputArea,"\n");
+        //print(sizeOfInputArea,"\n");
         stroke(204, 102, 0);
-        rect((int)(width/2-sizeOfInputArea/2 + 20 * i), (int)(height/2-sizeOfInputArea/2 + 80), 20, 30);
+        rect((int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * i), (int)(height/2-sizeOfInputArea/2 + 80 * 0.71), 20 * 0.71, 30 * 0.71);
         fill(0, 0, 0);
-        textSize(20);
-        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * i + 10), height/2-sizeOfInputArea/2 + 80+10);
+        textSize(12);
+        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * i + 10 * 0.71), height/2-sizeOfInputArea/2 + 80 * 0.71+10 * 0.71);
+        textSize(24);
       }
       else if (i < 19) { // second row of text buttons
         fill(255, 255, 255);
-        print(sizeOfInputArea,"\n");
+        //print(sizeOfInputArea,"\n");
         stroke(204, 102, 0);
-        rect((int)(width/2-sizeOfInputArea/2 + 20 * (i - 10)), (int)(height/2-sizeOfInputArea/2 + 110), 20, 30);
+        rect((int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 10)), (int)(height/2-sizeOfInputArea/2 + 110 * 0.71), 20 * 0.71, 30 * 0.71);
         fill(0, 0, 0);
-        textSize(20);
-        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * (i - 10) + 10), height/2-sizeOfInputArea/2 + 110+13);
+        textSize(12);
+        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 10) + 10 * 0.71), height/2-sizeOfInputArea/2 + 110 * 0.71+13 * 0.71);
+        textSize(24);
       }
       else { // third row text buttons
         fill(255, 255, 255);
-        print(sizeOfInputArea,"\n");
+        //print(sizeOfInputArea,"\n");
         stroke(204, 102, 0);
-        rect((int)(width/2-sizeOfInputArea/2 + 20 * (i - 19)), (int)(height/2-sizeOfInputArea/2 + 140), 20, 30);
+        rect((int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 19)), (int)(height/2-sizeOfInputArea/2 + 140 * 0.71), 20 * 0.71, 30 * 0.71);
         fill(0, 0, 0);
-        textSize(20);
-        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * (i - 19) + 10), height/2-sizeOfInputArea/2 + 140+13);
+        textSize(12);
+        text(keyboardLetters.get(i), (int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 19) + 10 * 0.71), height/2-sizeOfInputArea/2 + 140 * 0.71+13 * 0.71);
+        textSize(24);
       }
     }
     fill(255, 255, 255);
-    rect(width/2-sizeOfInputArea/2, (int)(height/2-sizeOfInputArea/2 + 170), 140, 30); // space button
+    rect(width/2-sizeOfInputArea/2, (int)(height/2-sizeOfInputArea/2 + 170 * 0.71), 140 * 0.71, 30 * 0.71); // space button
     fill(0, 0, 0);
-    text("space", width/2-sizeOfInputArea/2 + 70, height/2-sizeOfInputArea/2 + 170+12);
+    textSize(12);
+    text("space", width/2-sizeOfInputArea/2 + 70 * 0.71, height/2-sizeOfInputArea/2 + 170 * 0.71+12 * 0.71);
+    textSize(24);
     fill(255, 255, 255);
-    rect(width/2-sizeOfInputArea/2 + 140, (int)(height/2-sizeOfInputArea/2) + 140, 60, 60); // delete button
+    rect(width/2-sizeOfInputArea/2 + 140 * 0.71, (int)(height/2-sizeOfInputArea/2) + 140 * 0.71, 60 * 0.71, 60 * 0.71); // delete button
     fill(0, 0, 0);
-    text("delete", width/2-sizeOfInputArea/2 + 140 + 30, (int)(height/2-sizeOfInputArea/2) + 140 + 30); 
+    textSize(12);
+    text("delete", width/2-sizeOfInputArea/2 + 140 * 0.71 + 30 * 0.71, (int)(height/2-sizeOfInputArea/2) + 140 * 0.71 + 30 * 0.71);
+    textSize(24);
     drawSuggestWords();
   }
 }
@@ -221,15 +234,15 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 String didMouseClickLetter() {
   for (int i = 0; i < keyboardLetters.size(); i++) {
     if (i < 10) { // first row of text buttons
-      if (didMouseClick((width/2-sizeOfInputArea/2 + 20 * i), (int)(height/2-sizeOfInputArea/2 + 80), 20, 30))
+      if (didMouseClick((width/2-sizeOfInputArea/2 + 20 * 0.71 * i), (int)(height/2-sizeOfInputArea/2 + 80 * 0.71), 20 * 0.71, 30 * 0.71))
         return keyboardLetters.get(i);
     }
     else if (i < 19) { // second row of text buttons
-      if (didMouseClick((int)(width/2-sizeOfInputArea/2 + 20 * (i - 10)), (int)(height/2-sizeOfInputArea/2 + 110), 20, 30))
+      if (didMouseClick((int)(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 10)), (int)(height/2-sizeOfInputArea/2 + 110 * 0.71), 20 * 0.71, 30 * 0.71))
         return keyboardLetters.get(i);
     }
     else { // third row text buttons
-      if (didMouseClick(width/2-sizeOfInputArea/2 + 20 * (i - 19), (int)(height/2-sizeOfInputArea/2 + 140), 20, 30))
+      if (didMouseClick(width/2-sizeOfInputArea/2 + 20 * 0.71 * (i - 19), (int)(height/2-sizeOfInputArea/2 + 140 * 0.71), 20 * 0.71, 30 * 0.71))
         return keyboardLetters.get(i);
     }
   }
@@ -248,7 +261,7 @@ void handleSuggestWordClick() {
   int numSuggestWords = min(suggestTopN, suggestTopNWords.size());
   if (numSuggestWords <= 2) {
     for (int i = 0; i < numSuggestWords; i++) {
-      if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i), height/2-sizeOfInputArea/2 + 40, sizeOfInputArea / numSuggestWords, 40)) {
+      if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / suggestTopNWords.size() * i), height/2-sizeOfInputArea/2 + 40 * 0.71, sizeOfInputArea / numSuggestWords, 40 * 0.71)) {
         SuggestWordClicked(i);
       }
     }
@@ -256,12 +269,12 @@ void handleSuggestWordClick() {
   else {
     for (int i = 0; i < numSuggestWords; i++) {
       if (i < 2) {
-        if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i), height/2-sizeOfInputArea/2 + 40, sizeOfInputArea / 2, 40)) {
+        if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / 2 * i), height/2-sizeOfInputArea/2 + 40 * 0.71, sizeOfInputArea / 2, 40 * 0.71)) {
           SuggestWordClicked(i);
         }
       }
       else {
-        if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)), height/2-sizeOfInputArea/2, sizeOfInputArea / (numSuggestWords - 2), 40)) {
+        if (didMouseClick(width/2-sizeOfInputArea/2+(sizeOfInputArea / (suggestTopNWords.size() - 2) * (i - 2)), height/2-sizeOfInputArea/2, sizeOfInputArea / (numSuggestWords - 2), 40 * 0.71)) {
           SuggestWordClicked(i);
         }
       }
@@ -272,7 +285,7 @@ void handleSuggestWordClick() {
 //my terrible implementation you can entirely replace
 void mousePressed()
 {
-  if (didMouseClick(width/2-sizeOfInputArea/2 + 140, (int)(height/2-sizeOfInputArea/2) + 140, 60, 60)) //check if click in backspace button
+  if (didMouseClick(width/2-sizeOfInputArea/2 + 140 * 0.71, (int)(height/2-sizeOfInputArea/2) + 140 * 0.71, 60 * 0.71, 60 * 0.71)) //check if click in backspace button
   {
     if (currentTyped.length() > 0) // delete a letter if anything was typed in this trial
       currentTyped = currentTyped.substring(0, currentTyped.length()-1);
@@ -293,7 +306,7 @@ void mousePressed()
     printPrefixMap();
   }
   // handles click on space button 
-  if (didMouseClick(width/2-sizeOfInputArea/2, (int)(height/2-sizeOfInputArea/2 + 170), 140, 30)) {
+  if (didMouseClick(width/2-sizeOfInputArea/2, (int)(height/2-sizeOfInputArea/2 + 170 * 0.71), 140 * 0.71, 30 * 0.71)) {
     currentTyped+=" ";
     try {
       typedWords.add(currentWord);
